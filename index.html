@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gold & Glam - Jewellery Shop</title>
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, input, textarea {
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem 0;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background: url('https://via.placeholder.com/1600x500?text=Jewellery+Banner') no-repeat center center/cover;
+      height: 60vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      text-shadow: 1px 1px 5px #000;
+      text-align: center;
+      justify-content: center;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+    }
+
+    .about, .contact {
+      padding: 2rem 0;
+    }
+
+    .jewellery h2, .about h2, .contact h2 {
+      margin-bottom: 1rem;
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      gap: 1rem;
+    }
+
+    .slide-img {
+      width: 300px;
+      height: 200px;
+      cursor: pointer;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    button#prev, button#next {
+      background-color: #444;
+      color: white;
+      border: none;
+      font-size: 2rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact input, .contact textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .contact button {
+      background-color: #333;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      padding-top: 60px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      display: block;
+      margin: auto;
+      max-width: 80%;
+      max-height: 80vh;
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 50px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+      }
+
+      .slides {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .slide-img {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-container">
+      <h1>Gold & Glam</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#jewellery">Jewellery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Elegance Redefined</h2>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about container">
+    <h2>About Us</h2>
+    <p>We are a premier jewellery brand offering handcrafted gold, silver, and diamond jewellery. Our collection combines tradition with modern elegance.</p>
+  </section>
+
+  <!-- Jewellery Section with Slider -->
+  <section id="jewellery" class="jewellery container">
+    <h2>Our Collection</h2>
+    <div class="slider">
+      <button id="prev">&#10094;</button>
+      <div class="slides">
+        <img src="https://via.placeholder.com/300x200?text=Necklace" alt="Necklace" class="slide-img" />
+        <img src="https://via.placeholder.com/300x200?text=Rings" alt="Rings" class="slide-img" />
+        <img src="https://via.placeholder.com/300x200?text=Earrings" alt="Earrings" class="slide-img" />
+        <img src="https://via.placeholder.com/300x200?text=Bangles" alt="Bangles" class="slide-img" />
+      </div>
+      <button id="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Your message..." required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modal-img">
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Gold & Glam Jewellery. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Image Slider
+    const slides = document.querySelector('.slides');
+    let index = 0;
+
+    document.getElementById('next').addEventListener('click', () => {
+      index = (index + 1) % slides.children.length;
+      updateSlider();
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      index = (index - 1 + slides.children.length) % slides.children.length;
+      updateSlider();
+    });
+
+    function updateSlider() {
+      const slideWidth = slides.children[0].offsetWidth + 16;
+      slides.style.transform = \`translateX(-\${index * slideWidth}px)\`;
+    }
+
+    // Modal Logic
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const close = document.querySelector(".close");
+
+    document.querySelectorAll(".slide-img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+      });
+    });
+
+    close.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    // Contact form (dummy handler)
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Message sent successfully!");
+    });
+  </script>
+
+</body>
+</html>
 
